@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "smartimpute"
+version = "0.1.0"
+description = "Intelligent Missing Data Imputation System with Adaptive Selection and Artificial Masking Evaluation"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "numpy>=1.22.0",
+    "pandas>=1.4.0",
+    "scikit-learn>=1.1.0",
+    "scipy>=1.8.0",
+    "optuna>=3.0.0",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+]
+
+[project.scripts]
+smartimpute = "smartimpute.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

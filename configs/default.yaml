@@ -1,0 +1,40 @@
+system:
+  random_seed: 42
+  verbose: true
+
+evaluation:
+  test_mask_ratio: 0.15
+  n_splits: 3
+  metrics:
+    numeric: ["rmse", "mae"]
+    categorical: ["accuracy", "macro_f1"]
+
+strategies:
+  numeric:
+    - mean
+    - median
+    - knn
+    - iterative
+    - similarity
+  categorical:
+    - mode
+    - constant
+    - similarity
+  timeseries:
+    - ffill
+    - bfill
+    - linear_interpolation
+
+optimization:
+  enabled: true
+  n_trials: 15
+  timeout: 60
+
+similarity:
+  n_neighbors: 5
+  weights: "distance"
+  categorical_metric: "overlap"
+
+missingness_indicator:
+  add_indicator: false
+  threshold: 0.05
